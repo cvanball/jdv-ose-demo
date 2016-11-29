@@ -1,0 +1,11 @@
+{
+  "kind": "ImageStream",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "jboss-datavirt63-openshift"
+  },
+  "spec": {
+    "dockerImageRepository": "registry.access.redhat.com/jboss-datavirt-6/datavirt63-openshift"
+  }
+}
+
