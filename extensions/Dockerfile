@@ -5,6 +5,6 @@ LABEL Name="jdv-demo" \
 
 COPY files /extensions/
 #COPY modules /extensions/modules/
-#COPY install.sh /extensions/
-#COPY install.properties /extensions/
+COPY install.sh /extensions/
+COPY install.properties /extensions/
 
