@@ -3,7 +3,7 @@
 <vdb name="country-ws" version="1">
 
     <model name="ws">
-        <source name="webservice" translator-name="rest" connection-jndi-name="java:/country-ws-ds"/>
+        <source name="webservice" translator-name="rest" connection-jndi-name="java:/country-ws-DS"/>
     </model>
     
     <model name="country" type="VIRTUAL">

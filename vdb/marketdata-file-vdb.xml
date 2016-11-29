@@ -1,28 +1,18 @@
-
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<vdb name="country-ws" version="1">
-
-    <model name="ws">
-        <source name="webservice" translator-name="rest" connection-jndi-name="java:/country-ws-ds"/>
+    <model name="file">
+        <source name="text-connector" translator-name="file" connection-jndi-name="java:/marketdata-file-DS"/>
     </model>
-    
-    <model name="country" type="VIRTUAL">
+    <model name="marketdata" type="VIRTUAL">
         <metadata type="DDL"><![CDATA[
-           CREATE  VIEW Countries (
-            name string PRIMARY KEY,
-            alpha2_code varchar(50),
-	    alpha3_code varchar(50)
-        ) AS SELECT  name, alpha2_code,alpha3_code 
-           FROM (EXEC OnWeb.invokeHttp(action=>'GET', endpoint=>'/country/get/all', stream=>'TRUE')) AS f, 
-	            XMLTABLE('/root/RestResponse/result' PASSING JSONTOXML('root', f.result) COLUMNS 
-		             name string PATH 'name/text()', 
-		             alpha2_code string PATH 'alpha2_code/text()',
-		             alpha3_code string PATH 'alpha3_code/text()') AS A;
-           ]]>        
-        </metadata>
+                
+        CREATE VIEW StockPrices (
+            symbol string PRIMARY KEY,
+            price bigdecimal
+        ) AS  
+          SELECT SP.symbol, SP.price
+          FROM (EXEC filedata.getTextFiles('*.txt')) AS f, 
+            TEXTTABLE(f.file COLUMNS symbol string, price bigdecimal HEADER) AS SP;                 
+            
+        ]]> </metadata>
     </model>
-
-    <translator name="rest" type="ws">
-        <property name="DefaultBinding" value="HTTP"/>
-    </translator>	
 </vdb>
