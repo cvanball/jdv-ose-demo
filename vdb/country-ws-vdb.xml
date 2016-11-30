@@ -1,7 +1,5 @@
-
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<vdb name="country-ws" version="1">
-
+<?xml version="1.0 encoding="UTF-8" standalone="yes"?> 
+<vdb name="country-ws"" version="1"">
     <model name="ws">
         <source name="webservice" translator-name="rest" connection-jndi-name="java:/country-ws-DS"/>
     </model>

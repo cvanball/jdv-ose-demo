@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<vdb name="marketdata-file" version="1">
     <model name="file">
         <source name="text-connector" translator-name="file" connection-jndi-name="java:/marketdata-file-DS"/>
     </model>
