@@ -11,7 +11,7 @@
             price bigdecimal
         ) AS  
           SELECT SP.symbol, SP.price
-          FROM (EXEC filedata.getTextFiles('*.txt')) AS f, 
+          FROM (EXEC file.getTextFiles('*.txt')) AS f, 
             TEXTTABLE(f.file COLUMNS symbol string, price bigdecimal HEADER) AS SP;                 
             
         ]]> </metadata>

@@ -11,7 +11,7 @@
             alpha2_code varchar(50),
 	    alpha3_code varchar(50)
         ) AS SELECT  name, alpha2_code,alpha3_code 
-           FROM (EXEC OnWeb.invokeHttp(action=>'GET', endpoint=>'/country/get/all', stream=>'TRUE')) AS f, 
+           FROM (EXEC ws.invokeHttp(action=>'GET', endpoint=>'/country/get/all', stream=>'TRUE')) AS f, 
 	            XMLTABLE('/root/RestResponse/result' PASSING JSONTOXML('root', f.result) COLUMNS 
 		             name string PATH 'name/text()', 
 		             alpha2_code string PATH 'alpha2_code/text()',
