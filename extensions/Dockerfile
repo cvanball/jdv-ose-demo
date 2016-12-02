@@ -1,4 +1,4 @@
-FROM scratch
+FROM registry.access.redhat.com/jboss-datavirt-6/datavirt63-openshift
 
 LABEL Name="jdv-demo" \
       Version="latest"
