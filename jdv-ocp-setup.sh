@@ -12,6 +12,8 @@ echo 'Creating a new project called jdv-demo'
 oc new-project jdv-demo
 echo 'Creating a service account and accompanying secret for use by the data virt application'
 oc create -f https://raw.githubusercontent.com/cvanball/jdv-ose-demo/master/extensions/datavirt-app-secret.yaml
+echo 'Add the role view to the service account under which the pod is running'
+oadm policy add-role-to-user view system:serviceaccount:jdv-demo:datavirt-service-account
 echo 'Retrieving datasource properties (market data flat file and country list web service hosted on public internet)'
 curl https://raw.githubusercontent.com/cvanball/jdv-ose-demo/master/extensions/datasources.properties -o datasources.properties
 echo 'Creating a secret around the datasource properties'
